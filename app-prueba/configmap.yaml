@@ -1,0 +1,46 @@
+---
+# ConfigMap con contenido personalizado
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-app-config
+  namespace: test-environment
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>MicroK8s Test App</title>
+        <style>
+            body { 
+                font-family: Arial, sans-serif; 
+                text-align: center; 
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                margin: 0;
+                padding: 50px;
+            }
+            .container {
+                background: rgba(255,255,255,0.1);
+                padding: 30px;
+                border-radius: 10px;
+                display: inline-block;
+            }
+            h1 { color: #fff; }
+            .info { margin: 20px 0; }
+        </style>
+    </head>
+    <body>
+     <div class="container">
+            <h1>🚀 MicroK8s Test Application</h1>
+            <div class="info">
+                <p><strong>Status:</strong> Running successfully!</p>
+                <p><strong>Environment:</strong> Test</p>
+                <p><strong>Timestamp:</strong> <span id="timestamp"></span></p>
+            </div>
+        </div>
+        <script>
+            document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        </script>
+    </body>
+    </html>

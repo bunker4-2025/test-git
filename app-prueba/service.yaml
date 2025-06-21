@@ -1,0 +1,39 @@
+---
+# Service LoadBalancer para acceso externo
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-app-loadbalancer
+  namespace: app-prueba
+  labels:
+    app: test-app
+  annotations:
+    metallb.universe.tf/address-pool: default-addresspool
+spec:
+  selector:
+    app: test-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    name: http
+  type: LoadBalancer
+
+---
+# Service para exponer la aplicación
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-app-service
+  namespace: test-environment
+  labels:
+    app: test-app
+spec:
+  selector:
+    app: test-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    name: http
+  type: ClusterIP
