@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: test-app-config
-  namespace: test-environment
+  namespace: app-prueba
 data:
   index.html: |
     <!DOCTYPE html>

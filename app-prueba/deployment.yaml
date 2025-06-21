@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: test-app
-  namespace: test-environment
+  namespace: app-prueba
   labels:
     app: test-app
 spec:
